@@ -1,9 +1,13 @@
-﻿namespace PlatformService.Dto
+﻿namespace ApiService.Core.Models
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class PlatformCreateDto
+    public class PlatformModel
     {
+        [Key]
+        [Required]
+        public int Id { get; set; }
+
         [Required]
         public string Name { get; set; }
 

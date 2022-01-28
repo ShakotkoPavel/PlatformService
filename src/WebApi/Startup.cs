@@ -1,6 +1,9 @@
-﻿namespace PlatformService
+﻿namespace ApiService.WepApi
 {
     using System;
+    using ApiService.Core.Abstraction;
+    using ApiService.Store;
+    using ApiService.Store.Services;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.EntityFrameworkCore;
@@ -8,7 +11,6 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.OpenApi.Models;
-    using PlatformService.Data;
 
     public class Startup
     {

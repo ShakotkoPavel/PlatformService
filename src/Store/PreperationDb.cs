@@ -1,9 +1,10 @@
-﻿namespace PlatformService.Data
+﻿namespace ApiService.Store
 {
     using System.Linq;
+    using ApiService.Core.Models;
+    using ApiService.Store.Services;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.Extensions.DependencyInjection;
-    using PlatformService.Models;
 
     public static class PreperationDb
     {
@@ -18,10 +19,10 @@
             if (!platformServiceDbContext.Platforms.Any())
             {
                 platformServiceDbContext.Platforms.AddRange(
-                    new Platform { Name = ".NET", Publisher = "Contoso", Cost = "Free" },
-                    new Platform { Name = "Java", Publisher = "Oracle", Cost = "$1" },
-                    new Platform { Name = "JavaScript", Publisher = "Google", Cost = "$10" },
-                    new Platform { Name = "Golang", Publisher = "Apache", Cost = "$20" });
+                    new PlatformModel { Name = ".NET", Publisher = "Contoso", Cost = "Free" },
+                    new PlatformModel { Name = "Java", Publisher = "Oracle", Cost = "$1" },
+                    new PlatformModel { Name = "JavaScript", Publisher = "Google", Cost = "$10" },
+                    new PlatformModel { Name = "Golang", Publisher = "Apache", Cost = "$20" });
 
                 platformServiceDbContext.SaveChanges();
             }

@@ -1,6 +1,6 @@
-﻿namespace PlatformService.Dto
+﻿namespace ApiService.Contracts.Queries
 {
-    public class PlatformReadDto
+    public class PlatformReadQuery
     {
         public int Id { get; set; }
 

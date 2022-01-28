@@ -1,15 +1,16 @@
-﻿namespace PlatformService.Profiles
+﻿namespace ApiService.WepApi.Profiles
 {
+    using ApiService.Contracts.Commands;
+    using ApiService.Contracts.Queries;
+    using ApiService.Core.Models;
     using AutoMapper;
-    using PlatformService.Dto;
-    using PlatformService.Models;
 
     public class PlatformsProfile : Profile
     {
         public PlatformsProfile()
         {
-            CreateMap<Platform, PlatformReadDto>();
-            CreateMap<PlatformCreateDto, Platform>();
+            CreateMap<PlatformModel, PlatformReadQuery>();
+            CreateMap<PlatformCreateCommand, PlatformModel>();
         }
     }
 }

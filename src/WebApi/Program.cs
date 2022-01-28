@@ -1,4 +1,4 @@
-﻿namespace PlatformService
+﻿namespace ApiService.WepApi
 {
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Hosting;

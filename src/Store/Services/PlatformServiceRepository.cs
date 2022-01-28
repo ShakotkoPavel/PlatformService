@@ -1,10 +1,11 @@
-﻿namespace PlatformService.Data
+﻿namespace ApiService.Store.Services
 {
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using ApiService.Core.Abstraction;
+    using ApiService.Core.Models;
     using Microsoft.EntityFrameworkCore;
-    using PlatformService.Models;
 
     public class PlatformServiceRepository : IPlatformServiceRepository
     {
@@ -20,17 +21,17 @@
             return await _platformServiceDbContext.SaveChangesAsync() >= 0;
         }
 
-        public async Task<IEnumerable<Platform>> GetPlatformsAsync()
+        public async Task<IEnumerable<PlatformModel>> GetPlatformsAsync()
         {
             return await _platformServiceDbContext.Platforms.ToListAsync();
         }
 
-        public async Task<Platform> GetPlatformIdAsync(int id)
+        public async Task<PlatformModel> GetPlatformIdAsync(int id)
         {
             return await _platformServiceDbContext.Platforms.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task CreatePlatformAsync(Platform plat)
+        public async Task CreatePlatformAsync(PlatformModel plat)
         {
             if (plat == null)
             {

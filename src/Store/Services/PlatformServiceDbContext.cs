@@ -1,7 +1,7 @@
-﻿namespace PlatformService.Data
+﻿namespace ApiService.Store.Services
 {
+    using ApiService.Core.Models;
     using Microsoft.EntityFrameworkCore;
-    using PlatformService.Models;
 
     public class PlatformServiceDbContext : DbContext
     {
@@ -10,6 +10,6 @@
         {
         }
 
-        public DbSet<Platform> Platforms { get; set; }
+        public DbSet<PlatformModel> Platforms { get; set; }
     }
 }

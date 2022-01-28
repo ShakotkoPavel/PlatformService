@@ -1,16 +1,16 @@
-﻿using PlatformService.Models;
-
-namespace PlatformService.Controllers
+﻿namespace ApiService.WepApi.Controllers
 {
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using ApiService.Contracts.Commands;
+    using ApiService.Contracts.Queries;
+    using ApiService.Core.Abstraction;
+    using ApiService.Core.Models;
     using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
-    using PlatformService.Data;
-    using PlatformService.Dto;
 
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class PlatformController : ControllerBase
     {
@@ -24,38 +24,38 @@ namespace PlatformService.Controllers
         }
 
         [HttpGet("platforms")]
-        public async Task<ActionResult<IEnumerable<PlatformReadDto>>> GetPlatforms()
+        public async Task<ActionResult<IEnumerable<PlatformReadQuery>>> GetPlatforms()
         {
             Console.WriteLine("GET platforms");
 
             var platformItem = await _platformServiceRepository.GetPlatformsAsync();
 
-            return Ok(_mapper.Map<IEnumerable<PlatformReadDto>>(platformItem));
+            return Ok(_mapper.Map<IEnumerable<PlatformReadQuery>>(platformItem));
         }
 
         [HttpGet("{id}", Name = nameof(GetPlatformById))]
-        public async Task<ActionResult<PlatformReadDto>> GetPlatformById([FromRoute] int id)
+        public async Task<ActionResult<PlatformReadQuery>> GetPlatformById([FromRoute] int id)
         {
             var platformItem = await _platformServiceRepository.GetPlatformIdAsync(id);
 
             if (platformItem != null)
             {
-                return Ok(_mapper.Map<PlatformReadDto>(platformItem));
+                return Ok(_mapper.Map<PlatformReadQuery>(platformItem));
             }
 
             return NotFound();
         }
 
         [HttpPost]
-        public async Task<ActionResult<PlatformReadDto>> CreatePlatformDto([FromBody] PlatformCreateDto createDto)
+        public async Task<ActionResult<PlatformReadQuery>> CreatePlatformDto([FromBody] PlatformCreateCommand createCommand)
         {
-            var platformModel = _mapper.Map<Platform>(createDto);
+            var platformModel = _mapper.Map<PlatformModel>(createCommand);
             await _platformServiceRepository.CreatePlatformAsync(platformModel);
             await _platformServiceRepository.SaveChangesAsync();
 
-            var platformDto = _mapper.Map<PlatformReadDto>(platformModel);
+            var platformDto = _mapper.Map<PlatformReadQuery>(platformModel);
 
-            return CreatedAtRoute(nameof(GetPlatformById), new {Id = platformDto.Id}, platformDto);
+            return CreatedAtRoute(nameof(GetPlatformById), new { Id = platformDto.Id }, platformDto);
         }
 
         [HttpPut("{id}")]

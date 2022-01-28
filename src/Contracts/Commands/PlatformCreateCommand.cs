@@ -1,13 +1,9 @@
-﻿namespace PlatformService.Models
+﻿namespace ApiService.Contracts.Commands
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class Platform
+    public class PlatformCreateCommand
     {
-        [Key]
-        [Required]
-        public int Id { get; set; }
-
         [Required]
         public string Name { get; set; }
 
