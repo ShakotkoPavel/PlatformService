@@ -1,4 +1,6 @@
-﻿namespace PlatformService.Controllers
+﻿using PlatformService.Models;
+
+namespace PlatformService.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -22,7 +24,7 @@
         }
 
         [HttpGet("platforms")]
-        public async Task<ActionResult<IEnumerable<PlatformReadDto>>> Get()
+        public async Task<ActionResult<IEnumerable<PlatformReadDto>>> GetPlatforms()
         {
             Console.WriteLine("GET platforms");
 
@@ -31,15 +33,29 @@
             return Ok(_mapper.Map<IEnumerable<PlatformReadDto>>(platformItem));
         }
 
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{id}", Name = nameof(GetPlatformById))]
+        public async Task<ActionResult<PlatformReadDto>> GetPlatformById([FromRoute] int id)
         {
-            return "value";
+            var platformItem = await _platformServiceRepository.GetPlatformIdAsync(id);
+
+            if (platformItem != null)
+            {
+                return Ok(_mapper.Map<PlatformReadDto>(platformItem));
+            }
+
+            return NotFound();
         }
 
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult<PlatformReadDto>> CreatePlatformDto([FromBody] PlatformCreateDto createDto)
         {
+            var platformModel = _mapper.Map<Platform>(createDto);
+            await _platformServiceRepository.CreatePlatformAsync(platformModel);
+            await _platformServiceRepository.SaveChangesAsync();
+
+            var platformDto = _mapper.Map<PlatformReadDto>(platformModel);
+
+            return CreatedAtRoute(nameof(GetPlatformById), new {Id = platformDto.Id}, platformDto);
         }
 
         [HttpPut("{id}")]
