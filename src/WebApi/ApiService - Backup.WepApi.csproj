@@ -6,7 +6,6 @@
 
     <ItemGroup>
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
-        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.11.1" />
         <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -22,5 +21,6 @@
 
     <PropertyGroup>
         <CodeAnalysisRuleSet>Properties/stylecop.ruleset</CodeAnalysisRuleSet>
+        <UserSecretsId>6154c0ab-f57b-4000-a1ec-fcb295f800b6</UserSecretsId>
     </PropertyGroup>
 </Project>
