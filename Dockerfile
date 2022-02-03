@@ -1,5 +1,4 @@
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
-
 WORKDIR /app
 
 COPY . ./
@@ -11,8 +10,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:5.0
 WORKDIR /app
 COPY --from=build /app/out .
 
-ENV ASPNETCORE_URLS=http://+:5000
-
-EXPOSE 5000
+EXPOSE 80
+EXPOSE 443
 
 ENTRYPOINT ["dotnet", "ApiService.WepApi.dll"]
