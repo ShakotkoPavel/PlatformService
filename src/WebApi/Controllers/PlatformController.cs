@@ -7,6 +7,7 @@
     using ApiService.Contracts.Queries;
     using ApiService.Core.Abstraction;
     using ApiService.Core.Models;
+    using ApiService.Infra;
     using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
 
@@ -16,11 +17,16 @@
     {
         private readonly IPlatformServiceRepository _platformServiceRepository;
         private readonly IMapper _mapper;
+        private readonly ICommandServiceClient _commandServiceClient;
 
-        public PlatformController(IPlatformServiceRepository platformServiceRepository, IMapper mapper)
+        public PlatformController(
+            IPlatformServiceRepository platformServiceRepository,
+            IMapper mapper,
+            ICommandServiceClient commandServiceClient)
         {
             _platformServiceRepository = platformServiceRepository;
             _mapper = mapper;
+            _commandServiceClient = commandServiceClient;
         }
 
         [HttpGet("platforms")]
@@ -55,7 +61,9 @@
 
             var platformDto = _mapper.Map<PlatformReadQuery>(platformModel);
 
-            return CreatedAtRoute(nameof(GetPlatformById), new { Id = platformDto.Id }, platformDto);
+            await _commandServiceClient.SendPlatformToCommand(platformDto);
+
+            return CreatedAtRoute(nameof(GetPlatformById), new { platformDto.Id }, platformDto);
         }
 
         [HttpPut("{id}")]

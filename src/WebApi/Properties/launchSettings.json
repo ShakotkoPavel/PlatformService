@@ -5,7 +5,10 @@
         "commandName": "Project",
         "launchBrowser": true,
         "launchUrl": "swagger",
-        "dotnetRunMessages": "true"
+        "dotnetRunMessages": "true",
+        "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+        }
     }
   }
 }

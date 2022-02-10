@@ -18,10 +18,11 @@
     <ItemGroup>
       <ProjectReference Include="..\Contracts\ApiService.Contracts.csproj" />
       <ProjectReference Include="..\Core\ApiService.Core.csproj" />
+      <ProjectReference Include="..\Infra\ApiService.Infra.csproj" />
       <ProjectReference Include="..\Store\ApiService.Store.csproj" />
     </ItemGroup>
 
     <PropertyGroup>
-        <CodeAnalysisRuleSet>Properties/stylecop.ruleset</CodeAnalysisRuleSet>
+        <CodeAnalysisRuleSet>stylecop.ruleset</CodeAnalysisRuleSet>
     </PropertyGroup>
 </Project>

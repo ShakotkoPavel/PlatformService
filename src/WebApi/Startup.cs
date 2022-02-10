@@ -2,6 +2,7 @@
 {
     using System;
     using ApiService.Core.Abstraction;
+    using ApiService.Infra;
     using ApiService.Store;
     using ApiService.Store.Services;
     using Microsoft.AspNetCore.Builder;
@@ -32,6 +33,8 @@
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PlatformService", Version = "v1" });
             });
+
+            services.ConfigureInfrastructure(Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
