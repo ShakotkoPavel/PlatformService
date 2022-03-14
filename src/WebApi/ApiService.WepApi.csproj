@@ -18,8 +18,8 @@
     <ItemGroup>
       <ProjectReference Include="..\Contracts\ApiService.Contracts.csproj" />
       <ProjectReference Include="..\Core\ApiService.Core.csproj" />
-      <ProjectReference Include="..\Infra\ApiService.Infra.csproj" />
-      <ProjectReference Include="..\Store\ApiService.Store.csproj" />
+      <ProjectReference Include="..\Infra\ApiService.Infrastructure.csproj" />
+      <ProjectReference Include="..\Store\ApiService.DataAccess.csproj" />
     </ItemGroup>
 
     <PropertyGroup>

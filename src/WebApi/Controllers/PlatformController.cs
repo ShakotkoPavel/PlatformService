@@ -1,4 +1,6 @@
-﻿namespace ApiService.WepApi.Controllers
+﻿using ApiService.Infrastructure;
+
+namespace ApiService.WepApi.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -7,7 +9,6 @@
     using ApiService.Contracts.Queries;
     using ApiService.Core.Abstraction;
     using ApiService.Core.Models;
-    using ApiService.Infra;
     using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
 

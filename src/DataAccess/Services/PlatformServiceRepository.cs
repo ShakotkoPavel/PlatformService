@@ -1,4 +1,4 @@
-﻿namespace ApiService.Store.Services
+﻿namespace ApiService.DataAccess.Services
 {
     using System;
     using System.Collections.Generic;

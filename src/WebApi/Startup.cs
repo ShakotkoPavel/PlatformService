@@ -1,10 +1,11 @@
-﻿namespace ApiService.WepApi
+﻿using ApiService.DataAccess;
+using ApiService.DataAccess.Services;
+using ApiService.Infrastructure;
+
+namespace ApiService.WepApi
 {
     using System;
     using ApiService.Core.Abstraction;
-    using ApiService.Infra;
-    using ApiService.Store;
-    using ApiService.Store.Services;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.EntityFrameworkCore;

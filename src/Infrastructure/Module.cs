@@ -1,4 +1,4 @@
-﻿namespace ApiService.Infra
+﻿namespace ApiService.Infrastructure
 {
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;

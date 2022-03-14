@@ -1,4 +1,4 @@
-﻿namespace ApiService.Infra
+﻿namespace ApiService.Infrastructure
 {
     public class CommandServiceConfiguration
     {

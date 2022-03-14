@@ -1,4 +1,4 @@
-﻿namespace ApiService.Infra
+﻿namespace ApiService.Infrastructure
 {
     using System.Threading.Tasks;
     using ApiService.Contracts.Queries;

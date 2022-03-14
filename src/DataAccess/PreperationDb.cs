@@ -1,8 +1,8 @@
-﻿namespace ApiService.Store
+﻿namespace ApiService.DataAccess
 {
     using System.Linq;
     using ApiService.Core.Models;
-    using ApiService.Store.Services;
+    using ApiService.DataAccess.Services;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.Extensions.DependencyInjection;
 
